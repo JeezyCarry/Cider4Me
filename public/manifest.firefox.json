@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Cider4Me",
+  "description": "Svelte-first Firefox sidebar extension with contextual AI assistance.",
+  "version": "0.1.0",
+  "icons": {
+    "16": "assets/logo.png",
+    "32": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
+  "action": {
+    "default_title": "Sider for Me",
+    "default_icon": {
+      "16": "assets/logo.png",
+      "32": "assets/logo.png",
+      "48": "assets/logo.png",
+      "128": "assets/logo.png"
+    }
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["content-app.js", "content-app.js.map", "page-parser-*.js", "assets/*"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "sider-for-me@siderfor.me",
+      "strict_min_version": "128.0"
+    }
+  }
+}
