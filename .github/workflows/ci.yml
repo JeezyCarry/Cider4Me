@@ -19,6 +19,8 @@ jobs:
         run: bun run lint
       - name: Typecheck
         run: bun run typecheck
+      - name: Test isolated (debug)
+        run: bun test test/sider-log.test.ts test/chat-router.test.ts test/search-provider-editor.test.ts
       - name: Test
         run: bun test
       - name: Build
